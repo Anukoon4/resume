@@ -3,20 +3,14 @@ var bodyParser = require('body-parser');
 var cors = require('cors');
 var path = require('path');
 //var https = require('https');
-var httpPort = process.env.httpPort || 4000;
+var httpPort = process.env.httpPort || 8000;
 //var httpsPort = process.env.httpsPort || 443;
 
 var app = express();
 
+app.use(express.static('views'))
 
-app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
-
-//app.use(requireHTTPS);
-app.use(express.static(path.join(__dirname, 'views')));
+//app.use(express.static(path.join(__dirname, 'views')));
 
 app.get('/*', function(req, res){
   res.sendFile(path.join(__dirname, 'views', 'index.html'));
@@ -26,7 +20,4 @@ if (require.main === module) {
   app.listen(httpPort, function() {
     console.log('Server http listening on port %d', this.address().port);
   });
-  /*https.createServer(config.ssl_options, app).listen(httpsPort, function () {
-    console.log('Server https listening on port %d', this.address().port);
-  });*/
 }
