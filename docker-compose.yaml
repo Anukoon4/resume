@@ -1,8 +1,8 @@
-version: '3'
+version: '3.5'
 services:
   myapp:
-    image: anukoon/resume-node-express
+    image: anukoonj/resume58364807
     ports:
-      - "8000:8000"
+      - "8000:3000"
     command: "npm start"
 
